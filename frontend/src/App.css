@@ -1,0 +1,15 @@
+:root {
+  --primary-color: hsl(160, 55%, 55%);
+
+
+  --bg-color: hsl(0, 0%, 7%);
+  --text-color: hsl(0, 0%, 30%);
+
+  --card-color: hsl(0, 0%, 0%, 0.5);
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande' !important;
+  color: white !important;
+  background-color: var(--bg-color) !important;
+}

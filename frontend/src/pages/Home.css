@@ -1,0 +1,262 @@
+.homeMain {
+  padding: 1rem 1rem;
+  cursor: default;
+}
+
+.homeSectionA {
+  background-color: var(--card-color);
+  border-radius: 1rem;
+
+  padding: 3rem 2rem !important;
+}
+
+.homeSectionA h3 {
+  margin-bottom: 3rem;
+}
+
+.homeSectionA .inputBox {
+  color: white;
+
+  font-size: 1.25rem;
+  background-color: transparent;
+
+  border: 1.5px solid var(--primary-color);
+  border-radius: 1rem;
+
+  padding: 0.5rem 1rem;
+}
+
+.homeSectionA .inputBtn {
+  font-size: 1.25rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+}
+
+.homeSectionA .goToGroupBtn {
+  font-size: 1.25rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+.homeSectionA .allSpan {
+  border-left: 1px solid rgb(99, 99, 99);
+}
+
+.homeSectionA .spanA {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.homeSectionA .spanB {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.homeSectionA .spanC {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.homeSectionA .spanD {
+  font-size: 1rem;
+}
+
+
+.homeSectionB {
+  background-color: var(--card-color);
+  border-radius: 1rem;
+
+  margin: 2rem;
+  padding: 3rem 2rem !important;
+}
+
+.homeSectionB h3 {
+  margin-bottom: 3rem;
+}
+
+.homeSectionB ul {
+  padding-left: 0px;
+}
+
+.homeSectionB ul li {
+  background-color: var(--bg-color);
+
+  border: 1.5px solid white;
+  border-radius: 3rem;
+
+  margin-bottom: 10px;
+  padding: 1.25rem 1.25rem;
+
+  width: 50%;
+  position: relative;
+  list-style: none;
+}
+
+.homeSectionB ul li:hover {
+  background-color: var(--card-color);
+  border-color: var(--primary-color);
+}
+
+.homeSectionB button {
+  background-color: var(--primary-color);
+
+  border: 1px solid var(--primary-color);
+  border-radius: 2rem;
+
+  padding: 0.5rem 1rem;
+}
+
+.homeSectionB .groupBtn1 {
+  position: absolute;
+  right: 7rem;
+  top: 0.75rem;
+}
+
+.homeSectionB .groupBtn2 {
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+}
+
+
+
+/*   Group Chat Page CSS   */
+
+
+.chatMain {
+  padding: 1rem 3rem;
+}
+
+.chatMain h3 {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.chatMessage {
+  background-color: var(--card-color);
+
+  border: 1px solid rgb(42, 42, 42);
+  border-radius: 1rem;
+
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.chatMain .chatInputBox {
+  color: white;
+
+  font-size: 1.25rem;
+  background-color: transparent;
+
+  border: 1px solid var(--primary-color);
+  border-radius: 1rem;
+
+  padding: 0.5rem 1rem;
+}
+
+.chatMain .chatSendBtn {
+  font-size: 1.25rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+}
+
+.chatSectionB {
+  margin-top: 2rem;
+}
+
+.chatMessage::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatMessage::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.chatMessage::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+  .homeSectionA .inputBox {
+    width: 100%;
+  }
+
+  .homeSectionA .inputBtn {
+    margin-left: 0rem;
+    margin-top: 1rem;
+  }
+
+  .homeSectionA .allSpan {
+    border-right: 1px solid rgb(99, 99, 99);
+  }
+
+  .homeSectionB {
+    margin: 2rem 0rem 2rem 0rem;
+  }
+
+  .homeSectionB ul li {
+
+    margin-bottom: 1rem;
+    padding: 1.5rem 1.25rem 4.5rem 1.25rem;
+
+    border-radius: 2rem;
+    width: 100%;
+  }
+
+  .homeSectionB .groupBtn1 {
+    right: 8rem;
+    top: 5rem;
+  }
+
+  .homeSectionB .groupBtn2 {
+    right: 2rem;
+    top: 5rem;
+  }
+
+
+  .chatMessage {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    height: 400px;
+  }
+
+  .chatMain .chatInputBox {
+    padding: 0.75rem 1rem;
+    margin-left: -2rem;
+
+    width: 128%;
+  }
+
+  .chatMain .chatSendBtn {
+    padding: 0.5rem 1.75rem;
+    margin-top: 1.25rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .chatSectionB {
+    margin-top: 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+}

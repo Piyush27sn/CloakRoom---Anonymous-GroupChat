@@ -1,0 +1,32 @@
+.navMain {
+    background-color: var(--card-color);
+    border-radius: 1rem;
+
+    padding: 2rem 2rem;
+    margin: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navMain .navBrand {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navMain ul li {
+    list-style: none;
+}
+
+.navLogo {
+    height: 3rem;
+}
+
+
+@media screen and (max-width: 767px) {
+    .navMain {
+        margin: 2rem 1rem 1rem 1rem;
+    }
+}

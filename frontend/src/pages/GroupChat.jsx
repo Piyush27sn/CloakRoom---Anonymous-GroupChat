@@ -87,7 +87,7 @@ export const GroupChat = () => {
     const socket = socketRef.current;
     if (!socket) return;
 
-    socket.emit("sendMessage", { groupId, text });
+    socket.emit("sendMessage", { groupId, text, memberId });
     setText("");
   };
 
@@ -108,12 +108,14 @@ export const GroupChat = () => {
       <button onClick={leaveGroup}> Leave Group </button>
       </div>
       <div className="chatMessage">
-        {messages.map((m, i) => (
+        {messages.map((m, i) => {
+          return (
           <p key={m._id ?? i}>
-            <strong>Anonymous: </strong>
+            <strong> Anonymous: </strong>
             {m.text}
           </p>
-        ))}
+          );
+        })}
         <div ref={messagesEndRef} />
       </div>
 
@@ -122,6 +124,11 @@ export const GroupChat = () => {
         onChange={(e) => setText(e.target.value)}
         placeholder="Type a message ... "
         className="chatInputBox"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            sendMessage();
+          }
+        }}
       />
       <button className="chatSendBtn" onClick={sendMessage}> Send </button>
 

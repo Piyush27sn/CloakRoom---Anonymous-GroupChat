@@ -167,6 +167,28 @@ io.on("connection", (socket) => {
                 ack({ ok: false, error: err.message });
             }
         }
+
+        // Save groupId and memberId on the socket for later
+        socket.data.groupId = groupId;
+        socket.data.memberId = memberId;
+
+        socket.on("disconnect", async () => {
+            console.log("User disconnected: ", socket.id);
+
+            const { groupId, memberId } = socket.data || {};
+            if (groupId && memberId) {
+                try {
+                    // remove member from DB
+                    await Member.deleteOne({ groupId, memberId });
+
+                    // broadcast updated list
+                    const members = await Member.find({ groupId });
+                    io.to(groupId).emit("membersUpdated", members);
+                } catch (err) {
+                    console.error("Error removing member: ", err);
+                }
+            }
+        });
     });
 
     socket.on("sendMessage", async ({ groupId, text }) => {

@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:localhost": "vite --mode localhost",
+    "dev:network": "vite --mode network",
     "build": "vite build",
+    "build:localhost": "vite build --mode localhost",
+    "build:network": "vite build --mode network",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -63,6 +63,9 @@ app.post("/groups", async (req, res) => {
         const group = new Group({ name: name.trim(), groupId });
         await group.save();
 
+        const groups = await Group.find().sort({ createdAt: -1 });
+        io.emit("groupsUpdated", groups);
+
         res.json({ groupId, link: `/group/${groupId}` });
     } catch (err) {
         console.error("Error creating group:", err);
@@ -124,6 +127,9 @@ app.delete("/groups/:groupId", async (req, res) => {
         if (!deleted) {
             return res.status(404).json({ error: "Group not found" });
         }
+
+        const groups = await Group.find().sort({ createdAt: -1 });
+        io.emit("groupsUpdated", groups);
 
         res.json({ message: "Group deleted successfully" });
     } catch (err) {

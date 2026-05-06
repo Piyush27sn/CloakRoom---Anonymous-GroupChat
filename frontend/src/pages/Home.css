@@ -88,7 +88,7 @@
 .homeSectionB ul li {
   background-color: var(--bg-color);
 
-  border: 1.5px solid white;
+  border: 1.5px solid rgb(161, 160, 160);;
   border-radius: 3rem;
 
   margin-bottom: 10px;
@@ -207,7 +207,7 @@
 
 
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 800px) {
   .homeSectionA .inputBox {
     width: 100%;
   }
@@ -236,12 +236,12 @@
 
   .homeSectionB .groupBtn1 {
     right: 8rem;
-    top: 5rem;
+    top: 4rem;
   }
 
   .homeSectionB .groupBtn2 {
     right: 2rem;
-    top: 5rem;
+    top: 4rem;
   }
 
 

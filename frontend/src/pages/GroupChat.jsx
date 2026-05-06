@@ -3,7 +3,11 @@ import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./Home.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const isLocalhost = typeof window !== "undefined" && ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const currentHost = typeof window !== "undefined" ? window.location.hostname : "localhost";
+const API_URL = isLocalhost
+  ? import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL
+  : `http://${currentHost}:5000`;
 
 const getMemberId = (groupId) => {
   const key = `anonMemberId_${groupId}`;   // store per group

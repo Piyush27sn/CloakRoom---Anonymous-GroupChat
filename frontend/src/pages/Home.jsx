@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-const APP_URL = import.meta.env.VITE_APP_URL || "http://localhost:5173";
+const isLocalhost = typeof window !== "undefined" && ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const currentHost = typeof window !== "undefined" ? window.location.hostname : "localhost";
+const API_URL = isLocalhost
+  ? import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL
+  : `http://${currentHost}:5000`;
+const APP_URL = isLocalhost
+  ? import.meta.env.VITE_APP_URL_LOCAL || import.meta.env.VITE_APP_URL
+  : `http://${currentHost}:5173`;
 
 export const Home = () => {
   const [groupName, setGroupName] = useState("");
@@ -38,8 +45,9 @@ export const Home = () => {
       const link = `${APP_URL}/group/${data.groupId}`;
       setInviteLink(link);
 
-      // Refresh groups list
-      fetchGroups();
+      // Show the new group immediately and refresh from backend
+      setGroups((prev) => [{ name: groupName.trim(), groupId: data.groupId }, ...prev]);
+      await fetchGroups();
       setGroupName("");
     } catch (err) {
       console.error("Error creating group: ", err);
@@ -66,6 +74,16 @@ export const Home = () => {
 
   useEffect(() => {
     fetchGroups();
+
+    const socket = io(API_URL);
+    socket.on("groupsUpdated", (updatedGroups) => {
+      setGroups(updatedGroups);
+    });
+
+    return () => {
+      socket.off("groupsUpdated");
+      socket.disconnect();
+    };
   }, []);
 
   return (
@@ -104,7 +122,7 @@ export const Home = () => {
         <h3> Available Groups: </h3>
         <ul>
           {groups.map((g) => (
-            <li key={g._id}>
+            <li key={g.groupId}>
               <b> Group name: </b>{g.name}
               <button className="groupBtn1"
                 onClick={() =>
